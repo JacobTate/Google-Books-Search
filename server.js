@@ -12,7 +12,14 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
-require("./routes/aipRoutes");
+    // router = express.Router();
+    // router.route("/api/book/save").get((req, res, next) => {
+    //     console.log(req);
+    // })
+    // app.post("/api/book/save", (req, res) => {
+    //   console.log(req.body.name);
+    // })
+    require("./routes/aipRoutes")(app)
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("*", (req, res) => {
