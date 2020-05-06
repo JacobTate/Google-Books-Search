@@ -20,21 +20,22 @@ class HomePage extends Component {
         let value = event.target.value;
         this.setState({
           bookName: value
-        });
-        console.log(this.state.bookName);
-        
+        }); 
       };
-    isRendered () {
-      this.state.isRendered ? this.setState({isRendered: false}): this.setState({isRendered: true});
-      return this.state.isRendered;
+    apiCall () {
+        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.bookName}&key=AIzaSyBsqVqaORZbJ82yW1hFcUcMHUB-ZEGexo8`)
+        .then(res => {  
+            let imageArr = res.data.items;
+            this.setState({
+                 imgArr: imageArr
+            })
+            this.state.isRendered ? this.setState({isRendered: false}): this.setState({isRendered: true});
+            return this.state.isRendered;
+ })
+ .catch(err => console.log(err));
+     
     }
     renderCard (imageArr) {
-        
-        if (imageArr.length === 0) {
-            return console.log(`404 no results found`);
-        }
-        else{
-            console.log(this.state);
         return(
             <div>
                 {
@@ -46,26 +47,13 @@ class HomePage extends Component {
     }
     </div>
         )
-}
+
     }
-
-
-    componentDidMount () {
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.bookName}&key=AIzaSyBsqVqaORZbJ82yW1hFcUcMHUB-ZEGexo8`)
-       .then(res => {  
-           let imageArr = res.data.items;
-           this.setState({
-                imgArr: imageArr
-           })
-                
-})
-.catch(err => console.log(err)); 
-}
     render() {
         return(
             <div>
             <Button 
-            isRendered={this.isRendered.bind(this)}
+            apiCall={this.apiCall.bind(this)}
             />
             {this.state.isRendered ? this.renderCard(this.state.imgArr): null}
             <form className="form">
