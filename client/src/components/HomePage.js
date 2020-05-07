@@ -26,6 +26,7 @@ class HomePage extends Component {
         axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.bookName}&key=AIzaSyBsqVqaORZbJ82yW1hFcUcMHUB-ZEGexo8`)
         .then(res => {  
             let imageArr = res.data.items;
+            console.log(imageArr);
             this.setState({
                  imgArr: imageArr
             })
@@ -42,6 +43,8 @@ class HomePage extends Component {
       imageArr.map(item => (
            <Card 
            imageLink={item.volumeInfo.imageLinks.thumbnail}
+           description={item.volumeInfo.description}
+           authors={item.volumeInfo.authors}
            />
     ))
     }
@@ -65,7 +68,7 @@ class HomePage extends Component {
             placeholder="Search"
           />
   </form>
-                        </div>
+    </div>
         )
     }
 };
