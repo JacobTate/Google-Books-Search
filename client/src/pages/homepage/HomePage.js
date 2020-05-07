@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
-import Card from "./Card";
-import Button from "./Button"
+import Card from "../../components/card/Card";
+import Button from "../../components/button/Button"
 class HomePage extends Component {
     constructor (props) {
         super(props)
