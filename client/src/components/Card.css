@@ -34,6 +34,7 @@
 #buttons {
     position: relative;
     margin-left: 70%;
+    bottom: 45px;
 }
 body{
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSKAFFPtOcUqe5aa-XA1zPq5TeUAS2BknnNqlfcJkjtbnWFkbAh&usqp=CAU");

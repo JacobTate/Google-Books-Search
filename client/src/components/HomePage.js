@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import axios from "axios";
 import Card from "./Card";
 import Button from "./Button"
-import Input from "./Input"
 class HomePage extends Component {
     constructor (props) {
         super(props)
@@ -45,6 +44,8 @@ class HomePage extends Component {
            imageLink={item.volumeInfo.imageLinks.thumbnail}
            description={item.volumeInfo.description}
            authors={item.volumeInfo.authors}
+           title={item.volumeInfo.title}
+           bookLink={item.volumeInfo.canonicalVolumeLink}
            />
     ))
     }
@@ -55,19 +56,24 @@ class HomePage extends Component {
     render() {
         return(
             <div>
-            <Button 
+          <div className="input-group m-3">
+  <div className="input-group-prepend">
+  <Button 
             apiCall={this.apiCall.bind(this)}
             />
+  </div>
+  <input
+   type="text"
+    className="form-control"
+     placeholder="Search"
+      aria-label="Example text with button addon"
+       aria-describedby="button-addon1"
+       value={this.state.bookName}
+       name="searchBook"
+       onChange={this.handleInputChange}
+        />
+</div>
             {this.state.isRendered ? this.renderCard(this.state.imgArr): null}
-            <form className="form">
-       <input
-            value={this.state.bookName}
-            name="searchBook"
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="Search"
-          />
-  </form>
     </div>
         )
     }
