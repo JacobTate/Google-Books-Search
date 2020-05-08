@@ -19,4 +19,12 @@ module.exports = function(app){
            res.json(data);
           });
       });
-}
+      app.post("/api/saved/delete", (req, res) => {
+          Saved.deleteOne({_id: req.body.cardId})
+          .then(data => {
+          })
+          .catch(err => {
+              console.log(err);
+          });
+     });
+};

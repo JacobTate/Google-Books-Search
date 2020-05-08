@@ -1,8 +1,13 @@
 import React from "react";
 import axios from "axios";
 function SavedCard({title, authors, bookLink, description, imageLink, cardId}) {
-    console.log(title);
-    
+        function deleteSaved (cardId) {
+            axios.post("/api/saved/delete", {
+                cardId
+            }).then(res => {
+            });
+            window.location.reload(false);
+        }   
 return(
     <div id="cardHolder">
     <div id="cardHeader">
@@ -10,7 +15,7 @@ return(
 <div>{title}</div>
      <div id="buttons">
       <span><a className="btn btn-primary" href={bookLink}>See book</a></span>
-      <span><button  className="btn btn-primary" >Delete Saved</button></span>
+      <span><button  className="btn btn-primary" onClick={() => {deleteSaved(cardId)}}>Delete</button></span>
     </div>
   </div>
 <div>
