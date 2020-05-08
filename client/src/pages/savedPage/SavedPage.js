@@ -22,6 +22,9 @@ class Savedpage extends Component {
          
         return(
             <div>
+       <nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="/">Home</a>
+</nav>
                 {
       this.state.items.map(element => (
            <SavedCard

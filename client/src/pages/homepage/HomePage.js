@@ -56,6 +56,9 @@ class HomePage extends Component {
     render() {
         return(
             <div>
+                  <nav class="navbar navbar-light bg-light">
+         <a class="navbar-brand" href="/saved">Saved books</a>
+         </nav>
           <div className="input-group m-3">
   <div className="input-group-prepend">
   <Button 
