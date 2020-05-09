@@ -21,10 +21,12 @@ class HomePage extends Component {
           bookName: value
         }); 
       };
-    apiCall () {
-        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.bookName}&key=AIzaSyBsqVqaORZbJ82yW1hFcUcMHUB-ZEGexo8`)
+    apiCall () {   
+        axios.post(`/api/get`, {
+            bookName: this.state.bookName
+        })
         .then(res => {  
-            let imageArr = res.data.items;
+            let imageArr = res.data;
             console.log(imageArr);
             this.setState({
                  imgArr: imageArr
@@ -56,8 +58,8 @@ class HomePage extends Component {
     render() {
         return(
             <div>
-                  <nav class="navbar navbar-light bg-light">
-         <a class="navbar-brand" href="/saved">Saved books</a>
+                  <nav className="navbar navbar-light bg-light">
+         <a className="navbar-brand" href="/saved">Saved books</a>
          </nav>
           <div className="input-group m-3">
   <div className="input-group-prepend">
